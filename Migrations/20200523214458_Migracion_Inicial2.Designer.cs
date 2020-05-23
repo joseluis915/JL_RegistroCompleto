@@ -9,8 +9,8 @@ using Tarea2_RegistroCompleto.DAL;
 namespace Tarea2_RegistroCompleto.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200523064151_Migracion_Inicial")]
-    partial class Migracion_Inicial
+    [Migration("20200523214458_Migracion_Inicial2")]
+    partial class Migracion_Inicial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

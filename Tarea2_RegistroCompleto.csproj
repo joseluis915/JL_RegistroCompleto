@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="BLL\ExtrasBLL.cs" />
+    <Compile Remove="Entidades\Extras.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\Agendar.png" />
     <None Remove="Resources\Buscar.png" />
     <None Remove="Resources\Crear.png" />
@@ -43,7 +48,6 @@
 
   <ItemGroup>
     <Folder Include="DATA\" />
-    <Folder Include="UI\" />
   </ItemGroup>
 
   <ItemGroup>

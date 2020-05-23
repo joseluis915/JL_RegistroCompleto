@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Tarea2_RegistroCompleto.Entidades
 {
-    class DatosPersonales
+    public class DatosPersonales
     {
         [Key]
         public int DatosPersonalesId { get; set; }/// prop + tab + tab (para insertar automatico)

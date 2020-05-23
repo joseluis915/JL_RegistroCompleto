@@ -9,20 +9,25 @@ using Tarea2_RegistroCompleto.Entidades;
 
 namespace Tarea2_RegistroCompleto.BLL
 {
-    public class ExtrasBLL ///Temporal
+    public class DatosPersonalesBLL
     {
-        public static bool Guardar(Extras extras)
-        {
-            if (!Existe(extras.ExtraId))
-                return Insertar(extras);
-            else
-                return Modificar(extras);
-        }
         /// <summary>
-        /// Permite guardar una entidad en la base de datos
+        /// Permite insertar o modificar una entidad en la base de datos
         /// </summary>
-        /// <param name="extras">La entidad que se desea guardar</param>
-        private static bool Insertar(Extras extras)
+        /// <param name="datospersonales">La entidad que se desea guardar</param> 
+        public static bool Guardar(DatosPersonales datospersonales)
+        {
+            if (!Existe(datospersonales.DatosPersonalesId))//si no existe insertamos
+                return Insertar(datospersonales);
+            else
+                return Modificar(datospersonales);
+        }
+
+        /// <summary>
+        /// Permite insertar una entidad en la base de datos
+        /// </summary>
+        /// <param name="datospersonales">La entidad que se desea guardar</param>
+        private static bool Insertar(DatosPersonales datospersonales)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -30,7 +35,7 @@ namespace Tarea2_RegistroCompleto.BLL
             try
             {
                 //Agregar la entidad que se desea insertar al contexto
-                contexto.Extras.Add(extras);
+                contexto.DatosPersonales.Add(datospersonales);
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -41,13 +46,15 @@ namespace Tarea2_RegistroCompleto.BLL
             {
                 contexto.Dispose();
             }
+
             return paso;
         }
+
         /// <summary>
         /// Permite modificar una entidad en la base de datos
         /// </summary>
-        /// <param name="extras">La entidad que se desea modificar</param>
-        private static bool Modificar(Extras extras)
+        /// <param name="datospersonales">La entidad que se desea modificar</param> 
+        public static bool Modificar(DatosPersonales datospersonales)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -55,7 +62,7 @@ namespace Tarea2_RegistroCompleto.BLL
             try
             {
                 //marcar la entidad como modificada para que el contexto sepa como proceder
-                contexto.Entry(extras).State = EntityState.Modified;
+                contexto.Entry(datospersonales).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -68,6 +75,7 @@ namespace Tarea2_RegistroCompleto.BLL
             }
             return paso;
         }
+
         /// <summary>
         /// Permite eliminar una entidad de la base de datos
         /// </summary>
@@ -76,18 +84,16 @@ namespace Tarea2_RegistroCompleto.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
-
             try
             {
                 //buscar la entidad que se desea eliminar
-                var extras = ExtrasBLL.Buscar(id);
+                var datospersonales = contexto.DatosPersonales.Find(id);
 
-                if (extras != null)
+                if (datospersonales != null)
                 {
-                    contexto.Extras.Remove(extras); //remover la entidad
+                    contexto.DatosPersonales.Remove(datospersonales);//remover la entidad
                     paso = contexto.SaveChanges() > 0;
                 }
-
             }
             catch (Exception)
             {
@@ -97,20 +103,22 @@ namespace Tarea2_RegistroCompleto.BLL
             {
                 contexto.Dispose();
             }
+
             return paso;
         }
+
         /// <summary>
         /// Permite buscar una entidad en la base de datos
         /// </summary>
-        /// <param name="id">El Id de la entidad que se desea buscar</param>
-        public static Extras Buscar(int id)
+        /// <param name="id">El Id de la entidad que se desea buscar</param> 
+        public static DatosPersonales Buscar(int id)
         {
-            Extras extras = new Extras();
             Contexto contexto = new Contexto();
+            DatosPersonales datospersonales;
 
             try
             {
-                extras = contexto.Extras.Find(id);
+                datospersonales = contexto.DatosPersonales.Find(id);
             }
             catch (Exception)
             {
@@ -120,22 +128,23 @@ namespace Tarea2_RegistroCompleto.BLL
             {
                 contexto.Dispose();
             }
-            return extras;
+
+            return datospersonales;
         }
+
         /// <summary>
         /// Permite obtener una lista filtrada por un criterio de busqueda
         /// </summary>
         /// <param name="criterio">La expresión que define el criterio de busqueda</param>
         /// <returns></returns>
-        public static List<Extras> GetList(Expression<Func<Extras, bool>> criterio)
+        public static List<DatosPersonales> GetList(Expression<Func<DatosPersonales, bool>> criterio)
         {
-            List<Extras> Lista = new List<Extras>();
+            List<DatosPersonales> lista = new List<DatosPersonales>();
             Contexto contexto = new Contexto();
-
             try
             {
                 //obtener la lista y filtrarla según el criterio recibido por parametro.
-                Lista = contexto.Extras.Where(criterio).ToList();
+                lista = contexto.DatosPersonales.Where(criterio).ToList();
             }
             catch (Exception)
             {
@@ -145,12 +154,9 @@ namespace Tarea2_RegistroCompleto.BLL
             {
                 contexto.Dispose();
             }
-            return Lista;
+            return lista;
         }
-        /// <summary>
-        /// Permite buscar si una entidad en la base de datos existe
-        /// </summary>
-        /// <param name="id">El Id de la entidad que se desea buscar</param>
+
         public static bool Existe(int id)
         {
             Contexto contexto = new Contexto();
@@ -158,7 +164,8 @@ namespace Tarea2_RegistroCompleto.BLL
 
             try
             {
-                encontrado = contexto.Extras.Any(e => e.ExtraId == id);
+                encontrado = contexto.DatosPersonales
+                    .Any(d => d.DatosPersonalesId == id);
             }
             catch (Exception)
             {
@@ -168,7 +175,27 @@ namespace Tarea2_RegistroCompleto.BLL
             {
                 contexto.Dispose();
             }
+
             return encontrado;
+        }
+
+        public static List<DatosPersonales> GetEstudiante()
+        {
+            List<DatosPersonales> lista = new List<DatosPersonales>();
+            Contexto contexto = new Contexto();
+            try
+            {
+                lista = contexto.DatosPersonales.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return lista;
         }
     }
 }
