@@ -16,9 +16,6 @@ using Tarea2_RegistroCompleto.UI.Registro;
 
 namespace Tarea2_RegistroCompleto
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -26,13 +23,18 @@ namespace Tarea2_RegistroCompleto
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_Persona(object sender, RoutedEventArgs e)
         {
             rDatosPersonales rDatosPersonales = new rDatosPersonales();
             rDatosPersonales.Show();
         }
+        private void Button_Click_Prestamo(object sender, RoutedEventArgs e)
+        {
+            rPrestamos rPrestamos = new rPrestamos();
+            rPrestamos.Show();
+        }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_Salir(object sender, RoutedEventArgs e)
         {
             Close();
         }

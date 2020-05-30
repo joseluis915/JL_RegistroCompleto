@@ -14,28 +14,27 @@ using Tarea2_RegistroCompleto.Entidades;
 
 namespace Tarea2_RegistroCompleto.UI.Registro
 {
-    public partial class rDatosPersonales : Window
+    public partial class rPrestamos : Window
     {
-        private DatosPersonales DatosPersonales = new DatosPersonales();
-
-        public rDatosPersonales()
+        private Prestamos Prestamos = new Prestamos();
+        public rPrestamos()
         {
             InitializeComponent();
             // Asignar la instancia del al formulario para usarla en BINDINGS
-            this.DataContext = DatosPersonales;
+            this.DataContext = Prestamos;
         }
         //——————————————————————————————————————————————[ LIMPIAR ]——————————————————————————————————————————————
         private void Limpiar()
         {
-            this.DatosPersonales = new DatosPersonales();
-            this.DataContext = DatosPersonales;
+            this.Prestamos = new Prestamos();
+            this.DataContext = Prestamos;
         }
         //——————————————————————————————————————————————[ VALIDAR ]——————————————————————————————————————————————
         private bool Validar()
         {
             bool esValido = true;
 
-            if (NombreCompletoTextbox.Text.Length == 0)
+            if (IdPrestamoTextbox.Text.Length == 0)
             {
                 esValido = false;
                 MessageBox.Show("Transaccion Fallida", "Fallo",
@@ -47,14 +46,15 @@ namespace Tarea2_RegistroCompleto.UI.Registro
         //——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————
         private void Button_Click_Buscar(object sender, RoutedEventArgs e)
         {
-            var personales = DatosPersonalesBLL.Buscar(Utilidades.ToInt(IdPersonaTextbox.Text));
+            var prestamos = PrestamosBLL.Buscar(Utilidades.ToInt(IdPrestamoTextbox.Text));
 
-            if (DatosPersonales != null)
-                this.DatosPersonales = personales;
+            if (Prestamos != null)
+                this.Prestamos = prestamos;
             else
-                this.DatosPersonales = new DatosPersonales();
+                this.Prestamos = new Prestamos();
 
-            this.DataContext = this.DatosPersonales;
+            this.DataContext = this.Prestamos;
+            
         }
         //——————————————————————————————————————————————[ NUEVO ]——————————————————————————————————————————————
         private void Button_Click_Nuevo(object sender, RoutedEventArgs e)
@@ -68,7 +68,7 @@ namespace Tarea2_RegistroCompleto.UI.Registro
                 if (!Validar())
                     return;
 
-                var paso = DatosPersonalesBLL.Guardar(DatosPersonales);
+                var paso = PrestamosBLL.Guardar(Prestamos);
 
                 if (paso)
                 {
@@ -79,13 +79,14 @@ namespace Tarea2_RegistroCompleto.UI.Registro
                 else
                     MessageBox.Show("Transaccion Fallida", "Fallo",
                         MessageBoxButton.OK, MessageBoxImage.Error);
+                
             }
         }
         //——————————————————————————————————————————————[ ELIMINAR ]——————————————————————————————————————————————
         private void Button_Click_Eliminar(object sender, RoutedEventArgs e)
         {
             {
-                if (DatosPersonalesBLL.Eliminar(Utilidades.ToInt(IdPersonaTextbox.Text)))
+                if (PrestamosBLL.Eliminar(Utilidades.ToInt(IdPrestamoTextbox.Text)))
                 {
                     Limpiar();
                     MessageBox.Show("Registro Eliminado!", "Exito",

@@ -5,34 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tarea2_RegistroCompleto"
         mc:Ignorable="d"
-        Title="MENU PRINCIPAL" Height="230" Width="470" WindowStartupLocation="CenterScreen">
+        Title="MENU PRINCIPAL" Height="250" Width="430" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel HorizontalAlignment="Center">
                 <Label Content="Menu Principal" FontWeight="Bold" Height="50" FontSize="26" />
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Height="50" Margin="10,15,10,0" HorizontalAlignment="Center">
-                <Button Width="220" Click="Button_Click" >
-                    <StackPanel Orientation="Horizontal">
-                        <Image Height="25" Source="/Resources/Crear.png"/>
-                        <Label Content="Registrar Persona" FontSize="20" FontWeight="Bold"/>
-                    </StackPanel>
-                </Button>
-
-                <Button Margin="50,0,0,0" Width="100" Click="Button_Click_1" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical" Margin="0,5,30,5" HorizontalAlignment="Center">
+                    <Button Width="230" Click="Button_Click_Persona" Height="50" >
+                        <StackPanel Orientation="Horizontal">
+                            <Image Height="25" Source="/Resources/Crear.png"/>
+                            <Label Content="Registrar Persona" FontSize="20" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button Width="230" Click="Button_Click_Prestamo" Margin="0,20,0,0" Height="50" >
+                        <StackPanel Orientation="Horizontal">
+                            <Image Height="25" Source="/Resources/Crear.png"/>
+                            <Label Content="Registrar Prestamo" FontSize="20" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                
+                <Button Click="Button_Click_Salir" Width="100" Height="50" >
                     <StackPanel Orientation="Horizontal">
                         <Image Height="30" Source="/Resources/Eliminar.png"/>
                         <Label Content="Salir" FontSize="20" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
-
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Height="25" Margin="10,10,10,0">
-                <Label Content="Creacion: 23/05/2020" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Padding="5,5,5,5" Width="143"/>
-                <Label Content="©2020 José Luis Hernández" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="153" HorizontalContentAlignment="Center"  />
-                <Label Content="Version: Beta 1.0" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="133" HorizontalContentAlignment="Right"/>
+                <Label Content="Creacion: 23/05/2020" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Padding="5,5,5,5" Width="125" Margin="0,0,10,0"/>
+                <Label Content="©2020 José Luis Hernández" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="154" HorizontalContentAlignment="Center" Margin="0,0,10,0"  />
+                <Label Content="Version: Beta 2.0" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="97" HorizontalContentAlignment="Right"/>
             </StackPanel>
 
         </StackPanel>

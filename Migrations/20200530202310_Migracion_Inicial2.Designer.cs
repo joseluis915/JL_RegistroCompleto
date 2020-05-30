@@ -9,7 +9,7 @@ using Tarea2_RegistroCompleto.DAL;
 namespace Tarea2_RegistroCompleto.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200523214458_Migracion_Inicial2")]
+    [Migration("20200530202310_Migracion_Inicial2")]
     partial class Migracion_Inicial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,32 @@ namespace Tarea2_RegistroCompleto.Migrations
                     b.HasKey("DatosPersonalesId");
 
                     b.ToTable("DatosPersonales");
+                });
+
+            modelBuilder.Entity("Tarea2_RegistroCompleto.Entidades.Prestamos", b =>
+                {
+                    b.Property<int>("PrestamoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("Balance")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("Concepto")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Monto")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("PersonaId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("PrestamoId");
+
+                    b.ToTable("Prestamos");
                 });
 #pragma warning restore 612, 618
         }

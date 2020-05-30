@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tarea2_RegistroCompleto.DAL;
 
 namespace Tarea2_RegistroCompleto.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20200529201940_Migracion_Inicial")]
+    partial class Migracion_Inicial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,32 +42,6 @@ namespace Tarea2_RegistroCompleto.Migrations
                     b.HasKey("DatosPersonalesId");
 
                     b.ToTable("DatosPersonales");
-                });
-
-            modelBuilder.Entity("Tarea2_RegistroCompleto.Entidades.Prestamos", b =>
-                {
-                    b.Property<int>("PrestamoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<double>("Balance")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("Concepto")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("Fecha")
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("Monto")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("PersonaId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("PrestamoId");
-
-                    b.ToTable("Prestamos");
                 });
 #pragma warning restore 612, 618
         }

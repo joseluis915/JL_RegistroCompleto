@@ -9,25 +9,25 @@ using Tarea2_RegistroCompleto.Entidades;
 
 namespace Tarea2_RegistroCompleto.BLL
 {
-    public class DatosPersonalesBLL
+    public class PrestamosBLL
     {
         /// <summary>
         /// Permite insertar o modificar una entidad en la base de datos
         /// </summary>
-        /// <param name="datospersonales">La entidad que se desea guardar</param> 
-        public static bool Guardar(DatosPersonales datospersonales)
+        /// <param name="prestamos">La entidad que se desea guardar</param> 
+        public static bool Guardar(Prestamos prestamos)
         {
-            if (!Existe(datospersonales.DatosPersonalesId))//si no existe insertamos
-                return Insertar(datospersonales);
+            if (!Existe(prestamos.PrestamoId))//si no existe insertamos
+                return Insertar(prestamos);
             else
-                return Modificar(datospersonales);
+                return Modificar(prestamos);
         }
 
         /// <summary>
         /// Permite insertar una entidad en la base de datos
         /// </summary>
-        /// <param name="datospersonales">La entidad que se desea guardar</param>
-        private static bool Insertar(DatosPersonales datospersonales)
+        /// <param name="prestamos">La entidad que se desea guardar</param>
+        private static bool Insertar(Prestamos prestamos)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -35,7 +35,7 @@ namespace Tarea2_RegistroCompleto.BLL
             try
             {
                 //Agregar la entidad que se desea insertar al contexto
-                contexto.DatosPersonales.Add(datospersonales);
+                contexto.Prestamos.Add(prestamos);
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -53,8 +53,8 @@ namespace Tarea2_RegistroCompleto.BLL
         /// <summary>
         /// Permite modificar una entidad en la base de datos
         /// </summary>
-        /// <param name="datospersonales">La entidad que se desea modificar</param> 
-        public static bool Modificar(DatosPersonales datospersonales)
+        /// <param name="prestamos">La entidad que se desea modificar</param> 
+        public static bool Modificar(Prestamos prestamos)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -62,7 +62,7 @@ namespace Tarea2_RegistroCompleto.BLL
             try
             {
                 //marcar la entidad como modificada para que el contexto sepa como proceder
-                contexto.Entry(datospersonales).State = EntityState.Modified;
+                contexto.Entry(prestamos).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -87,11 +87,11 @@ namespace Tarea2_RegistroCompleto.BLL
             try
             {
                 //buscar la entidad que se desea eliminar
-                var datospersonales = contexto.DatosPersonales.Find(id);
+                var prestamos = contexto.Prestamos.Find(id);
 
-                if (datospersonales != null)
+                if (prestamos != null)
                 {
-                    contexto.DatosPersonales.Remove(datospersonales);//remover la entidad
+                    contexto.Prestamos.Remove(prestamos);//remover la entidad
                     paso = contexto.SaveChanges() > 0;
                 }
             }
@@ -111,14 +111,14 @@ namespace Tarea2_RegistroCompleto.BLL
         /// Permite buscar una entidad en la base de datos
         /// </summary>
         /// <param name="id">El Id de la entidad que se desea buscar</param> 
-        public static DatosPersonales Buscar(int id)
+        public static Prestamos Buscar(int id)
         {
             Contexto contexto = new Contexto();
-            DatosPersonales datospersonales;
+            Prestamos prestamos;
 
             try
             {
-                datospersonales = contexto.DatosPersonales.Find(id);
+                prestamos = contexto.Prestamos.Find(id);
             }
             catch (Exception)
             {
@@ -129,7 +129,7 @@ namespace Tarea2_RegistroCompleto.BLL
                 contexto.Dispose();
             }
 
-            return datospersonales;
+            return prestamos;
         }
 
         /// <summary>
@@ -137,14 +137,14 @@ namespace Tarea2_RegistroCompleto.BLL
         /// </summary>
         /// <param name="criterio">La expresión que define el criterio de busqueda</param>
         /// <returns></returns>
-        public static List<DatosPersonales> GetList(Expression<Func<DatosPersonales, bool>> criterio)
+        public static List<Prestamos> GetList(Expression<Func<Prestamos, bool>> criterio)
         {
-            List<DatosPersonales> lista = new List<DatosPersonales>();
+            List<Prestamos> lista = new List<Prestamos>();
             Contexto contexto = new Contexto();
             try
             {
                 //obtener la lista y filtrarla según el criterio recibido por parametro.
-                lista = contexto.DatosPersonales.Where(criterio).ToList();
+                lista = contexto.Prestamos.Where(criterio).ToList();
             }
             catch (Exception)
             {
@@ -164,8 +164,8 @@ namespace Tarea2_RegistroCompleto.BLL
 
             try
             {
-                encontrado = contexto.DatosPersonales
-                    .Any(d => d.DatosPersonalesId == id);
+                encontrado = contexto.Prestamos
+                    .Any(d => d.PrestamoId == id);
             }
             catch (Exception)
             {
@@ -179,13 +179,13 @@ namespace Tarea2_RegistroCompleto.BLL
             return encontrado;
         }
 
-        public static List<DatosPersonales> GetDatosPersonales()
+        public static List<Prestamos> GetPrestamos()
         {
-            List<DatosPersonales> lista = new List<DatosPersonales>();
+            List<Prestamos> lista = new List<Prestamos>();
             Contexto contexto = new Contexto();
             try
             {
-                lista = contexto.DatosPersonales.ToList();
+                lista = contexto.Prestamos.ToList();
             }
             catch (Exception)
             {

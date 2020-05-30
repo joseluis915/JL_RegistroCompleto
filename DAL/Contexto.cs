@@ -9,6 +9,7 @@ namespace Tarea2_RegistroCompleto.DAL
     class Contexto : DbContext
     {
         public DbSet<DatosPersonales> DatosPersonales { get; set; }
+        public DbSet<Prestamos> Prestamos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
