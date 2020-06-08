@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Tarea2_RegistroCompleto
+namespace JL_RegistroCompleto
 {
     /// <summary>
     /// Interaction logic for App.xaml

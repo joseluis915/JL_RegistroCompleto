@@ -9,52 +9,47 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Tarea2_RegistroCompleto.BLL;
-using Tarea2_RegistroCompleto.Entidades;
+//No olvidar Agregar los siguientes [using].
+using JL_RegistroCompleto.BLL; //Nombre del proyecto.BLL
+using JL_RegistroCompleto.Entidades; //Nombre del proyecto.Entidades
 
-namespace Tarea2_RegistroCompleto.UI.Registro
+namespace JL_RegistroCompleto.UI.Registro
 {
-    public partial class rDatosPersonales : Window
+    public partial class rUsuarios : Window
     {
-        private DatosPersonales DatosPersonales = new DatosPersonales();
-
-        public rDatosPersonales()
+        private Usuarios Usuarios = new Usuarios();
+        public rUsuarios()
         {
             InitializeComponent();
             // Asignar la instancia del al formulario para usarla en BINDINGS
-            this.DataContext = DatosPersonales;
+            this.DataContext = Usuarios;
         }
         //——————————————————————————————————————————————[ LIMPIAR ]——————————————————————————————————————————————
         private void Limpiar()
         {
-            this.DatosPersonales = new DatosPersonales();
-            this.DataContext = DatosPersonales;
+            this.Usuarios = new Usuarios();
+            this.DataContext = Usuarios;
         }
         //——————————————————————————————————————————————[ VALIDAR ]——————————————————————————————————————————————
         private bool Validar()
         {
             bool esValido = true;
-
-            if (NombreCompletoTextbox.Text.Length == 0)
-            {
-                esValido = false;
-                MessageBox.Show("Transaccion Fallida", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-
+                if (UsuarioIdTextbox.Text.Length == 0)
+                {
+                    esValido = false;
+                    MessageBox.Show("Transaccion Fallida", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             return esValido;
         }
         //——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————
         private void Button_Click_Buscar(object sender, RoutedEventArgs e)
         {
-            var personales = DatosPersonalesBLL.Buscar(Utilidades.ToInt(IdPersonaTextbox.Text));
-
-            if (DatosPersonales != null)
-                this.DatosPersonales = personales;
-            else
-                this.DatosPersonales = new DatosPersonales();
-
-            this.DataContext = this.DatosPersonales;
+            var usuarios = UsuariosBLL.Buscar(Utilidades.ToInt(UsuarioIdTextbox.Text));
+                if (Usuarios != null)
+                    this.Usuarios = usuarios;
+                else
+                    this.Usuarios = new Usuarios();
+                this.DataContext = this.Usuarios;
         }
         //——————————————————————————————————————————————[ NUEVO ]——————————————————————————————————————————————
         private void Button_Click_Nuevo(object sender, RoutedEventArgs e)
@@ -68,32 +63,27 @@ namespace Tarea2_RegistroCompleto.UI.Registro
                 if (!Validar())
                     return;
 
-                var paso = DatosPersonalesBLL.Guardar(DatosPersonales);
-
-                if (paso)
-                {
-                    Limpiar();
-                    MessageBox.Show("Transaccion Exitosa!", "Exito",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
-                }
+                var paso = UsuariosBLL.Guardar(Usuarios);
+                    if (paso)
+                    {
+                        Limpiar();
+                        MessageBox.Show("Transaccion Exitosa!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 else
-                    MessageBox.Show("Transaccion Fallida", "Fallo",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Transaccion Fallida", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         //——————————————————————————————————————————————[ ELIMINAR ]——————————————————————————————————————————————
         private void Button_Click_Eliminar(object sender, RoutedEventArgs e)
         {
             {
-                if (DatosPersonalesBLL.Eliminar(Utilidades.ToInt(IdPersonaTextbox.Text)))
+                if (UsuariosBLL.Eliminar(Utilidades.ToInt(UsuarioIdTextbox.Text)))
                 {
                     Limpiar();
-                    MessageBox.Show("Registro Eliminado!", "Exito",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Registro Eliminado!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
-                    MessageBox.Show("No fue posible eliminar", "Fallo",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("No fue posible eliminar", "Fallo",  MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         //—————————————————————————————————————————————————————————————————————————————————————————————————————————

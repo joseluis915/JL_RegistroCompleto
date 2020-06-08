@@ -4,30 +4,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using Tarea2_RegistroCompleto.DAL;
-using Tarea2_RegistroCompleto.Entidades;
+using JL_RegistroCompleto.DAL;
+using JL_RegistroCompleto.Entidades;
 
-namespace Tarea2_RegistroCompleto.BLL
+namespace JL_RegistroCompleto.BLL
 {
-    public class DatosPersonalesBLL
+    public class PersonasBLL
     {
         /// <summary>
         /// Permite insertar o modificar una entidad en la base de datos
         /// </summary>
-        /// <param name="datospersonales">La entidad que se desea guardar</param> 
-        public static bool Guardar(DatosPersonales datospersonales)
+        /// <param name="persona">La entidad que se desea guardar</param> 
+        public static bool Guardar(Personas persona)
         {
-            if (!Existe(datospersonales.DatosPersonalesId))//si no existe insertamos
-                return Insertar(datospersonales);
+            if (!Existe(persona.PersonaId))//si no existe insertamos
+                return Insertar(persona);
             else
-                return Modificar(datospersonales);
+                return Modificar(persona);
         }
 
         /// <summary>
         /// Permite insertar una entidad en la base de datos
         /// </summary>
         /// <param name="datospersonales">La entidad que se desea guardar</param>
-        private static bool Insertar(DatosPersonales datospersonales)
+        private static bool Insertar(Personas datospersonales)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -35,7 +35,7 @@ namespace Tarea2_RegistroCompleto.BLL
             try
             {
                 //Agregar la entidad que se desea insertar al contexto
-                contexto.DatosPersonales.Add(datospersonales);
+                contexto.Personas.Add(datospersonales);
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -54,7 +54,7 @@ namespace Tarea2_RegistroCompleto.BLL
         /// Permite modificar una entidad en la base de datos
         /// </summary>
         /// <param name="datospersonales">La entidad que se desea modificar</param> 
-        public static bool Modificar(DatosPersonales datospersonales)
+        public static bool Modificar(Personas datospersonales)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -87,11 +87,11 @@ namespace Tarea2_RegistroCompleto.BLL
             try
             {
                 //buscar la entidad que se desea eliminar
-                var datospersonales = contexto.DatosPersonales.Find(id);
+                var datospersonales = contexto.Personas.Find(id);
 
                 if (datospersonales != null)
                 {
-                    contexto.DatosPersonales.Remove(datospersonales);//remover la entidad
+                    contexto.Personas.Remove(datospersonales);//remover la entidad
                     paso = contexto.SaveChanges() > 0;
                 }
             }
@@ -111,14 +111,14 @@ namespace Tarea2_RegistroCompleto.BLL
         /// Permite buscar una entidad en la base de datos
         /// </summary>
         /// <param name="id">El Id de la entidad que se desea buscar</param> 
-        public static DatosPersonales Buscar(int id)
+        public static Personas Buscar(int id)
         {
             Contexto contexto = new Contexto();
-            DatosPersonales datospersonales;
+            Personas datospersonales;
 
             try
             {
-                datospersonales = contexto.DatosPersonales.Find(id);
+                datospersonales = contexto.Personas.Find(id);
             }
             catch (Exception)
             {
@@ -137,14 +137,14 @@ namespace Tarea2_RegistroCompleto.BLL
         /// </summary>
         /// <param name="criterio">La expresión que define el criterio de busqueda</param>
         /// <returns></returns>
-        public static List<DatosPersonales> GetList(Expression<Func<DatosPersonales, bool>> criterio)
+        public static List<Personas> GetList(Expression<Func<Personas, bool>> criterio)
         {
-            List<DatosPersonales> lista = new List<DatosPersonales>();
+            List<Personas> lista = new List<Personas>();
             Contexto contexto = new Contexto();
             try
             {
                 //obtener la lista y filtrarla según el criterio recibido por parametro.
-                lista = contexto.DatosPersonales.Where(criterio).ToList();
+                lista = contexto.Personas.Where(criterio).ToList();
             }
             catch (Exception)
             {
@@ -164,8 +164,8 @@ namespace Tarea2_RegistroCompleto.BLL
 
             try
             {
-                encontrado = contexto.DatosPersonales
-                    .Any(d => d.DatosPersonalesId == id);
+                encontrado = contexto.Personas
+                    .Any(d => d.PersonaId == id);
             }
             catch (Exception)
             {
@@ -179,13 +179,13 @@ namespace Tarea2_RegistroCompleto.BLL
             return encontrado;
         }
 
-        public static List<DatosPersonales> GetDatosPersonales()
+        public static List<Personas> GetDatosPersonales()
         {
-            List<DatosPersonales> lista = new List<DatosPersonales>();
+            List<Personas> lista = new List<Personas>();
             Contexto contexto = new Contexto();
             try
             {
-                lista = contexto.DatosPersonales.ToList();
+                lista = contexto.Personas.ToList();
             }
             catch (Exception)
             {

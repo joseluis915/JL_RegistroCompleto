@@ -4,7 +4,7 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;///Agregar este using para que funcione el [Key]
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Tarea2_RegistroCompleto.Entidades
+namespace JL_RegistroCompleto.Entidades
 {
     public class Prestamos
     {
@@ -18,5 +18,19 @@ namespace Tarea2_RegistroCompleto.Entidades
 
         ///[ForeignKey("PersonaId")]
         ///public virtual DatosPersonales { get; set; }
+        ///
+
+        public Prestamos()
+        {
+
+        }
+
+        public Prestamos(int PersonaId, string Concepto, int Monto)
+        {
+            this.PersonaId = PersonaId.ToString();
+            this.Concepto = Concepto;
+            this.Monto = Monto;
+        }
+
     }
 }

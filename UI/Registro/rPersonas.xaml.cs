@@ -14,27 +14,28 @@ using JL_RegistroCompleto.Entidades;
 
 namespace JL_RegistroCompleto.UI.Registro
 {
-    public partial class rPrestamos : Window
+    public partial class rPersonas : Window
     {
-        private Prestamos Prestamos = new Prestamos();
-        public rPrestamos()
+        private Personas Personas = new Personas();
+
+        public rPersonas()
         {
             InitializeComponent();
             // Asignar la instancia del al formulario para usarla en BINDINGS
-            this.DataContext = Prestamos;
+            this.DataContext = Personas;
         }
         //——————————————————————————————————————————————[ LIMPIAR ]——————————————————————————————————————————————
         private void Limpiar()
         {
-            this.Prestamos = new Prestamos();
-            this.DataContext = Prestamos;
+            this.Personas = new Personas();
+            this.DataContext = Personas;
         }
         //——————————————————————————————————————————————[ VALIDAR ]——————————————————————————————————————————————
         private bool Validar()
         {
             bool esValido = true;
 
-            if (IdPrestamoTextbox.Text.Length == 0)
+            if (NombreCompletoTextbox.Text.Length == 0)
             {
                 esValido = false;
                 MessageBox.Show("Transaccion Fallida", "Fallo",
@@ -46,15 +47,14 @@ namespace JL_RegistroCompleto.UI.Registro
         //——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————
         private void Button_Click_Buscar(object sender, RoutedEventArgs e)
         {
-            var prestamos = PrestamosBLL.Buscar(Utilidades.ToInt(IdPrestamoTextbox.Text));
+            var personales = PersonasBLL.Buscar(Utilidades.ToInt(IdPersonaTextbox.Text));
 
-            if (Prestamos != null)
-                this.Prestamos = prestamos;
+            if (Personas != null)
+                this.Personas = personales;
             else
-                this.Prestamos = new Prestamos();
+                this.Personas = new Personas();
 
-            this.DataContext = this.Prestamos;
-            
+            this.DataContext = this.Personas;
         }
         //——————————————————————————————————————————————[ NUEVO ]——————————————————————————————————————————————
         private void Button_Click_Nuevo(object sender, RoutedEventArgs e)
@@ -68,7 +68,7 @@ namespace JL_RegistroCompleto.UI.Registro
                 if (!Validar())
                     return;
 
-                var paso = PrestamosBLL.Guardar(Prestamos);
+                var paso = PersonasBLL.Guardar(Personas);
 
                 if (paso)
                 {
@@ -79,14 +79,13 @@ namespace JL_RegistroCompleto.UI.Registro
                 else
                     MessageBox.Show("Transaccion Fallida", "Fallo",
                         MessageBoxButton.OK, MessageBoxImage.Error);
-                
             }
         }
         //——————————————————————————————————————————————[ ELIMINAR ]——————————————————————————————————————————————
         private void Button_Click_Eliminar(object sender, RoutedEventArgs e)
         {
             {
-                if (PrestamosBLL.Eliminar(Utilidades.ToInt(IdPrestamoTextbox.Text)))
+                if (PersonasBLL.Eliminar(Utilidades.ToInt(IdPersonaTextbox.Text)))
                 {
                     Limpiar();
                     MessageBox.Show("Registro Eliminado!", "Exito",

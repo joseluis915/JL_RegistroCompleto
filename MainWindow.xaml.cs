@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Tarea2_RegistroCompleto.UI.Registro;
+using JL_RegistroCompleto.UI.Registro;
 
-namespace Tarea2_RegistroCompleto
+namespace JL_RegistroCompleto
 {
     public partial class MainWindow : Window
     {
@@ -25,13 +25,19 @@ namespace Tarea2_RegistroCompleto
 
         private void Button_Click_Persona(object sender, RoutedEventArgs e)
         {
-            rDatosPersonales rDatosPersonales = new rDatosPersonales();
+            rPersonas rDatosPersonales = new rPersonas();
             rDatosPersonales.Show();
         }
         private void Button_Click_Prestamo(object sender, RoutedEventArgs e)
         {
             rPrestamos rPrestamos = new rPrestamos();
             rPrestamos.Show();
+        }
+
+        private void Button_Click_Usuario(object sender, RoutedEventArgs e)
+        {
+            rUsuarios rUsuarios = new rUsuarios();
+            rUsuarios.Show();
         }
 
         private void Button_Click_Salir(object sender, RoutedEventArgs e)
