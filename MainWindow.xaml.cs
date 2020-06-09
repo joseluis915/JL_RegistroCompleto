@@ -22,24 +22,20 @@ namespace JL_RegistroCompleto
         {
             InitializeComponent();
         }
-        private void rPersonaButton_Click(object sender, RoutedEventArgs e)
+        private void rPersonaMenuItem_Click(object sender, RoutedEventArgs e)
         {
             rPersonas rDatosPersonales = new rPersonas();
             rDatosPersonales.Show();
         }
-        private void rPrestamoButton_Click(object sender, RoutedEventArgs e)
+        private void rPrestamoMenuItem_Click(object sender, RoutedEventArgs e)
         {
             rPrestamos rPrestamos = new rPrestamos();
             rPrestamos.Show();
         }
-        private void rUsuarioButton_Click(object sender, RoutedEventArgs e)
+        private void rUsuarioMenuItem_Click(object sender, RoutedEventArgs e)
         {
             rUsuarios rUsuarios = new rUsuarios();
             rUsuarios.Show();
-        }
-        private void SalirButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

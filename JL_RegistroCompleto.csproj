@@ -18,6 +18,7 @@
     <None Remove="Resources\Crear.png" />
     <None Remove="Resources\Eliminar.png" />
     <None Remove="Resources\Guardar.png" />
+    <None Remove="Resources\Home.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +35,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Guardar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Home.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
