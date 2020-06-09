@@ -23,24 +23,24 @@ namespace JL_RegistroCompleto
             InitializeComponent();
         }
 
-        private void Button_Click_Persona(object sender, RoutedEventArgs e)
+        private void rPersonaButton_Click(object sender, RoutedEventArgs e)
         {
             rPersonas rDatosPersonales = new rPersonas();
             rDatosPersonales.Show();
         }
-        private void Button_Click_Prestamo(object sender, RoutedEventArgs e)
+        private void rPrestamoButton_Click(object sender, RoutedEventArgs e)
         {
             rPrestamos rPrestamos = new rPrestamos();
             rPrestamos.Show();
         }
 
-        private void Button_Click_Usuario(object sender, RoutedEventArgs e)
+        private void rUsuarioButton_Click(object sender, RoutedEventArgs e)
         {
             rUsuarios rUsuarios = new rUsuarios();
             rUsuarios.Show();
         }
 
-        private void Button_Click_Salir(object sender, RoutedEventArgs e)
+        private void SalirButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
