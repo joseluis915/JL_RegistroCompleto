@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JL_RegistroCompleto.UI.Registro"
         mc:Ignorable="d"
-        Title="REGISTRO DE USUARIOS" Height="350" Width="470" Icon="/Resources/Agendar.png" WindowStartupLocation="CenterScreen">
+        Title="REGISTRO DE USUARIOS" Height="330" Width="480" Icon="/Resources/Agendar.png" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Label Content="Usuario Id" FontWeight="Bold" FontSize="18" Width="430" Height="35"/>
+            <Label Content="Usuario Id" FontWeight="Bold" FontSize="18" Height="35"/>
  <!--——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————-->
-            <StackPanel Orientation="Horizontal" Height="35" Margin="10,0,10,0">
-                <TextBox x:Name="UsuarioIdTextbox" Text="{Binding UsuarioId}" Width="260" FontSize="18" FontWeight="Bold" Background="#19000000" Foreground="#B2000000" VerticalContentAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" Height="35">
+                <TextBox x:Name="UsuarioIdTextbox" Text="{Binding UsuarioId}" Width="280" FontSize="18" FontWeight="Bold" Background="#19000000" Foreground="#B2000000" VerticalContentAlignment="Center"/>
                 <Button x:Name="BuscarButton" Margin="50,0,0,0" Width="120" Click="BuscarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Height="30" Source="/Resources/Buscar.png" />
@@ -20,13 +20,13 @@
                 </Button>
             </StackPanel>
  <!--——————————————————————————————————————————————[ NOMBRE ]——————————————————————————————————————————————-->
-            <Label Content="Nombre" FontWeight="Bold" FontSize="18" Height="30" Width="430" />
-            <TextBox x:Name="NombreTextbox" Text="{Binding Nombre}" FontSize="18" Height="35" Width="430" VerticalContentAlignment="Center"/>
+            <Label Content="Nombre" FontWeight="Bold" FontSize="18" Height="30"/>
+            <TextBox x:Name="NombreTextbox" Text="{Binding Nombre}" FontSize="18" Height="35" VerticalContentAlignment="Center"/>
  <!--——————————————————————————————————————————————[ CLAVE ]——————————————————————————————————————————————-->
-            <Label Content="Clave" FontWeight="Bold" FontSize="18" Height="30" Width="430"/>
-            <TextBox x:Name="ClaveTextbox" Text="{Binding Clave}" FontSize="18" Width="430" Height="35" VerticalContentAlignment="Center"/>
+            <Label Content="Clave" FontWeight="Bold" FontSize="18" Height="30"/>
+            <TextBox x:Name="ClaveTextbox" Text="{Binding Clave}" FontSize="18" Height="35" VerticalContentAlignment="Center"/>
  <!--——————————————————————————————————————————————[ BOTON NUEVO ]——————————————————————————————————————————————-->
-            <StackPanel Orientation="Horizontal" Height="35" Margin="10,15,10,0">
+            <StackPanel Orientation="Horizontal" Height="35" Margin="0,15,0,0">
                 <Button x:Name="NuevoButton" Width="130" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Height="25" Source="/Resources/Crear.png"/>
@@ -34,14 +34,14 @@
                     </StackPanel>
                 </Button>
  <!--——————————————————————————————————————————————[ BOTON GUARDAR ]——————————————————————————————————————————————-->
-                <Button x:Name="GuardarButton" Margin="20,0,0,0" Width="130" Click="GuardarButton_Click">
+                <Button x:Name="GuardarButton" Margin="30,0,0,0" Width="130" Click="GuardarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Height="30" Source="/Resources/Guardar.png"/>
                         <Label Content="Guardar" FontSize="17" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
 <!--——————————————————————————————————————————————[ BOTON ELIMINAR ]——————————————————————————————————————————————-->
-                <Button x:Name="EliminarButton" Margin="20,0,0,0" Width="130" Click="EliminarButton_Click">
+                <Button x:Name="EliminarButton" Margin="30,0,0,0" Width="130" Click="EliminarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Height="30" Source="/Resources/Eliminar.png"/>
                         <Label Content="Eliminar" FontSize="17" FontWeight="Bold"/>

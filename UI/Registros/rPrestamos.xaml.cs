@@ -37,14 +37,12 @@ namespace JL_RegistroCompleto.UI.Registro
             if (IdPrestamoTextbox.Text.Length == 0)
             {
                 esValido = false;
-                MessageBox.Show("Transaccion Fallida", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Transaccion Fallida", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-
             return esValido;
         }
         //——————————————————————————————————————————————[ BUSCAR ]——————————————————————————————————————————————
-        private void Button_Click_Buscar(object sender, RoutedEventArgs e)
+        private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             var prestamos = PrestamosBLL.Buscar(Utilidades.ToInt(IdPrestamoTextbox.Text));
 
@@ -54,15 +52,14 @@ namespace JL_RegistroCompleto.UI.Registro
                 this.Prestamos = new Prestamos();
 
             this.DataContext = this.Prestamos;
-            
         }
         //——————————————————————————————————————————————[ NUEVO ]——————————————————————————————————————————————
-        private void Button_Click_Nuevo(object sender, RoutedEventArgs e)
+        private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
         }
         //——————————————————————————————————————————————[ GUARDAR ]——————————————————————————————————————————————
-        private void Button_Click_Guardar(object sender, RoutedEventArgs e)
+        private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             {
                 if (!Validar())
@@ -73,28 +70,23 @@ namespace JL_RegistroCompleto.UI.Registro
                 if (paso)
                 {
                     Limpiar();
-                    MessageBox.Show("Transaccion Exitosa!", "Exito",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Transaccion Exitosa!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
-                    MessageBox.Show("Transaccion Fallida", "Fallo",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
-                
+                    MessageBox.Show("Transaccion Fallida", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         //——————————————————————————————————————————————[ ELIMINAR ]——————————————————————————————————————————————
-        private void Button_Click_Eliminar(object sender, RoutedEventArgs e)
+        private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
             {
                 if (PrestamosBLL.Eliminar(Utilidades.ToInt(IdPrestamoTextbox.Text)))
                 {
                     Limpiar();
-                    MessageBox.Show("Registro Eliminado!", "Exito",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Registro Eliminado!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
-                    MessageBox.Show("No fue posible eliminar", "Fallo",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("No fue posible eliminar", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         //—————————————————————————————————————————————————————————————————————————————————————————————————————————

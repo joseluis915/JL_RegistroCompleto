@@ -22,7 +22,6 @@ namespace JL_RegistroCompleto
         {
             InitializeComponent();
         }
-
         private void rPersonaButton_Click(object sender, RoutedEventArgs e)
         {
             rPersonas rDatosPersonales = new rPersonas();
@@ -33,13 +32,11 @@ namespace JL_RegistroCompleto
             rPrestamos rPrestamos = new rPrestamos();
             rPrestamos.Show();
         }
-
         private void rUsuarioButton_Click(object sender, RoutedEventArgs e)
         {
             rUsuarios rUsuarios = new rUsuarios();
             rUsuarios.Show();
         }
-
         private void SalirButton_Click(object sender, RoutedEventArgs e)
         {
             Close();

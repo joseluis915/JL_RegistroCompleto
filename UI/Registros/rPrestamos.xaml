@@ -5,85 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JL_RegistroCompleto.UI.Registro"
         mc:Ignorable="d"
-        Title="REGISTRO PRESTAMO" Height="470" Width="470" WindowStartupLocation="CenterScreen">
+        Title="REGISTRO PRESTAMO" Height="475" Width="490" WindowStartupLocation="CenterScreen" Icon="/Resources/Agendar.png">
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal" Height="30" Margin="10,5,10,0">
-                <Label Content="Id Prestamo" FontWeight="Bold" Height="35" FontSize="18" />
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Height="35" Margin="10,0,10,0">
+<!--——————————————————————————————————————————————[ ID PRESTAMO ]——————————————————————————————————————————————-->
+            <Label Content="Id Prestamo" FontWeight="Bold" Height="35" FontSize="18" />
+            <StackPanel Orientation="Horizontal" Height="35">
                 <TextBox x:Name="IdPrestamoTextbox" Text="{Binding IdPrestamo}" Width="260" FontSize="18" VerticalContentAlignment="Center" FontWeight="Bold" Background="#19000000" Foreground="#B2000000" />
-                <Button Margin="50,0,0,0" Width="120" Click="Button_Click_Buscar">
+                <!--—————————————————————————————[ BOTON BUSCAR ]—————————————————————————————-->
+                <Button x:Name="BuscarButton" Click="BuscarButton_Click" Margin="50,0,0,0" Width="120">
                     <StackPanel Orientation="Horizontal">
                         <Image Height="30" Source="/Resources/Buscar.png" />
                         <Label Content="Buscar" FontSize="17" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Height="30" Margin="10,5,10,0">
-                <Label Content="Id Persona" FontWeight="Bold" Height="30" FontSize="18" />
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Height="35" Margin="10,0,10,0">
-                <TextBox x:Name="IdPersona" Text="{Binding IdPersona}" Width="430" FontSize="18" VerticalContentAlignment="Center" />
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Height="30" Margin="10,5,10,0">
-                <Label Content="Fecha" FontWeight="Bold" Height="35" FontSize="18" />
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Height="35" Margin="10,0,10,0">
-                <DatePicker x:Name="FechaDataPicker" SelectedDate="{Binding Fecha}" Height="35" Width="430" FontSize="16" IsTodayHighlighted="False" VerticalContentAlignment="Center" Foreground="#B2000000" SelectedDateFormat="Short"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Height="30" Margin="10,5,10,0">
-                <Label Content="Concepto" FontWeight="Bold" Height="35" FontSize="18"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Height="35" Margin="10,0,10,0">
-                <TextBox x:Name="ConceptoTextbox" Text="{Binding Concepto}" Width="430" FontSize="18" VerticalContentAlignment="Center"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Height="30" Margin="10,5,10,0" HorizontalAlignment="Center">
+<!--——————————————————————————————————————————————[ ID PERSONA ]——————————————————————————————————————————————-->
+            <Label Content="Id Persona" FontWeight="Bold" Height="30" FontSize="18" />
+            <TextBox x:Name="IdPersonaTextbox" Text="{Binding IdPersona}" FontSize="18" Height="35" VerticalContentAlignment="Center" />
+<!--——————————————————————————————————————————————[ FECHA ]——————————————————————————————————————————————-->
+            <Label Content="Fecha" FontWeight="Bold" Height="35" FontSize="18" />
+            <DatePicker x:Name="FechaDataPicker" SelectedDate="{Binding Fecha}" FontSize="16" Height="35" SelectedDateFormat="Short" VerticalContentAlignment="Center"/>
+<!--——————————————————————————————————————————————[ CONCEPTO ]——————————————————————————————————————————————-->
+            <Label Content="Concepto" FontWeight="Bold" Height="35" FontSize="18"/>
+            <TextBox x:Name="ConceptoTextbox" Text="{Binding Concepto}" FontSize="18" Height="35" VerticalContentAlignment="Center"/>
+<!--——————————————————————————————————————————————[ MONTO Y BALANCE ]——————————————————————————————————————————————-->
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
                 <Label Content="Monto" FontWeight="Bold" Height="30" FontSize="18" />
-                <Label Content="Balance" FontWeight="Bold" Height="30" FontSize="18" Margin="150,0,0,0" />
+                <Label Content="Balance" FontWeight="Bold" Height="30" FontSize="18" Margin="180,0,0,0" />
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Height="35" Margin="10,0,10,0">
+            <StackPanel Orientation="Horizontal" Height="35">
                 <TextBox x:Name="MontoTextbox" Text="{Binding Monto}" Width="200" FontSize="18" VerticalContentAlignment="Center" />
-                <TextBox x:Name="BalanceTextbox" Text="{Binding Balance}" Width="200" Margin="30,0,0,0" FontSize="18" VerticalContentAlignment="Center" IsReadOnly="True" />
+                <TextBox x:Name="BalanceTextbox" Text="{Binding Balance}" Width="200" Margin="50,0,0,0" FontSize="18" VerticalContentAlignment="Center" IsReadOnly="True" />
             </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Height="35" Margin="10,15,10,0">
-                <Button Width="130" Click="Button_Click_Nuevo">
+<!--——————————————————————————————————————————————[ BOTON NUEVO ]——————————————————————————————————————————————-->
+            <StackPanel Orientation="Horizontal" Height="35" Margin="0,15,0,0">
+                <Button x:Name="NuevoButton" Width="130" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Height="25" Source="/Resources/Crear.png"/>
                         <Label Content="Nuevo" FontSize="17" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
-
-                <Button Margin="20,0,0,0" Width="130" Click="Button_Click_Guardar">
+<!--——————————————————————————————————————————————[ BOTON GUARDAR ]——————————————————————————————————————————————-->
+                <Button x:Name="GuardarButton" Margin="30,0,0,0" Width="130" Click="GuardarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Height="30" Source="/Resources/Guardar.png"/>
                         <Label Content="Guardar" FontSize="17" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
-
-                <Button Margin="20,0,0,0" Width="130" Click="Button_Click_Eliminar">
+<!--——————————————————————————————————————————————[ BOTON ELIMINAR ]——————————————————————————————————————————————-->
+                <Button x:Name="EliminarButton" Margin="30,0,0,0" Width="130" Click="EliminarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Height="30" Source="/Resources/Eliminar.png"/>
                         <Label Content="Eliminar" FontSize="17" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
-
             </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Height="25" Margin="10,5,10,0">
-                <Label Content="Creacion: 30/05/2020" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Padding="5,5,5,5" Width="143"/>
-                <Label Content="©2020 José Luis Hernández" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="153" HorizontalContentAlignment="Center"  />
-                <Label Content="Version: Beta 1.0" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="133" HorizontalContentAlignment="Right"/>
+<!--——————————————————————————————————————————————[ INFORMACION ]——————————————————————————————————————————————-->
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+                <Label Content="Creacion: 30/05/2020" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="130"/>
+                <Label Content="©2020 José Luis Hernández" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="180" HorizontalContentAlignment="Center"  />
+                <Label Content="Version: Beta 1.0" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="120" HorizontalContentAlignment="Right"/>
             </StackPanel>
 
         </StackPanel>
