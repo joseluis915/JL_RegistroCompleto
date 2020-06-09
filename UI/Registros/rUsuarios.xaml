@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JL_RegistroCompleto.UI.Registro"
         mc:Ignorable="d"
-        Title="REGISTRO DE USUARIOS" Height="330" Width="480" Icon="/Resources/Agendar.png" WindowStartupLocation="CenterScreen">
+        Title="REGISTRO DE USUARIOS" Height="330" Width="490" Icon="/Resources/Agendar.png" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label Content="Usuario Id" FontWeight="Bold" FontSize="18" Height="35"/>
@@ -49,10 +49,10 @@
                 </Button>
             </StackPanel>
 <!--——————————————————————————————————————————————[ INFORMACION ]——————————————————————————————————————————————-->
-            <StackPanel Orientation="Horizontal" Height="25" HorizontalAlignment="Center" Margin="0,5,0,0">
-                <Label Content="Creacion: 08/06/2020" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Padding="5,5,5,5" Width="143"/>
-                <Label Content="©2020 José Luis Hernández" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="153" HorizontalContentAlignment="Center"  />
-                <Label Content="Version: Beta 1.0" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="133" HorizontalContentAlignment="Right"/>
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center" Margin="0,5,0,0">
+                <Label Content="Creacion: 08/06/2020" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="125"/>
+                <Label Content="©2020 José Luis Hernández" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="200" HorizontalContentAlignment="Center"  />
+                <Label Content="Version: Beta 1.0" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="120" HorizontalContentAlignment="Right"/>
             </StackPanel>
 
         </StackPanel>

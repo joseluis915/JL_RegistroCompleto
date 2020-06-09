@@ -65,8 +65,8 @@
             <!--——————————————————————————————————————————————[ INFORMACION ]——————————————————————————————————————————————-->
             <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
                 <Label Content="Creacion: 22/05/2020" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="125"/>
-                <Label Content="©2020 José Luis Hernández" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="190" HorizontalContentAlignment="Center"  />
-                <Label Content="Version: Beta 1.0" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="133" HorizontalContentAlignment="Right"/>
+                <Label Content="©2020 José Luis Hernández" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="200" HorizontalContentAlignment="Center"  />
+                <Label Content="Version: Beta 1.0" FontWeight="Bold" Height="25" FontSize="11" FontStyle="Italic" Foreground="#99000000" Width="120" HorizontalContentAlignment="Right"/>
             </StackPanel>
 
         </StackPanel>
